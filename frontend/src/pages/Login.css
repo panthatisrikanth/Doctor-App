@@ -1,0 +1,19 @@
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Set card width to 50% on large screens */
+  .custom-card {
+    width: 30%;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 767px) {
+    /* Set card width to 100% on small screens */
+    .custom-card {
+      width: 90%;
+    }
+  }

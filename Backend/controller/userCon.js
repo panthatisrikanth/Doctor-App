@@ -14,7 +14,7 @@ let userreg=async(req,res)=>{
         })
     }
     else{
-        res.json({"msg":"email exist"})
+        res.json({"msg":"email exist",success:false})
     }
 }
 let login=async(req,res)=>{
@@ -29,11 +29,14 @@ let login=async(req,res)=>{
                 "token":jwt.sign({"uid":req.body._id},process.env.JWT_SECRET),
                 "email":result.email,
                 "isAdmin":result.isAdmin,
-                "isDoctor":result.isDoctor
+                "isDoctor":result.isDoctor,
+                success:true
             })
         }
         else{
-            res.json({"mag":"check password"})
+            res.json({"msg":"check password",
+            success:false
+        })
         }
     }
 }

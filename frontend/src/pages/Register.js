@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Register.css'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Register = () => {
     let negative=useNavigate()
@@ -18,15 +19,14 @@ const Register = () => {
           [e.target.name]: e.target.value
         });
       };
-    
+      
       const handleSubmit = (res) => {
         if(userDetails.name && userDetails.email && userDetails.password)
         {
             axios.post("http://localhost:5000/user/register",userDetails).then((res)=>{
+              
             setSuccessMessage('Account created successfully!');
-            setTimeout(()=>{
-                negative("/")
-            },2000)
+            
             console.log(res.data)
         })
         }
