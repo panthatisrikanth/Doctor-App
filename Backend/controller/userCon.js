@@ -1,7 +1,8 @@
 const userModel = require("../models/userModel")
 let bcrypt=require("bcrypt")
 const { v4: uuidv4 } = require('uuid');
-let jwt=require("jsonwebtoken")
+let jwt=require("jsonwebtoken");
+const doctorModel = require("../models/doctorModel");
 let userreg=async(req,res)=>{
     let result=await userModel.findOne({"email":req.body.email})
     if(result==null){
@@ -40,5 +41,9 @@ let login=async(req,res)=>{
         }
     }
 }
+let getDoctorDetails=async(req,res)=>{
+    let data=await doctorModel.find({status:"Approved"})
+    res.json(data)
 
-module.exports={userreg,login}
+}
+module.exports={userreg,login,getDoctorDetails}
