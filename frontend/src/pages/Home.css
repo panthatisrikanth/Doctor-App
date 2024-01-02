@@ -1,6 +1,7 @@
 .sidebar {
+  margin-top: 20px;
   margin: 0;
-  padding: 0;
+  padding: 20px 0px;
   width: 200px;
   background-color: #e92525;
   position: fixed;
@@ -9,6 +10,7 @@
 }
 
 .sidebar a {
+  margin-top: 20px;
   display: block;
   color: black;
   padding: 16px;
