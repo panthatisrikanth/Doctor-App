@@ -72,16 +72,21 @@ let getDoctorDetails=async(req,res)=>{
 }
 let bookAppointment=async(req,res)=>{
     let result=await appointmentModel.find({"userId":req.body.userId,"DoctorId":req.body.DoctorId})
-    if(!result.length==0){
-        res.json({"msg":"You already Booked Appointment"})
-    }
-    else{
+    if(result.visited){
         let data={"_id":uuidv4(),...req.body}
         new appointmentModel(data).save().then(()=>{
             res.json({"msg":"Appointment booked"})
         }).catch((err)=>{
             console.log(err)
         })
+        
+    }
+    else{
+        res.json({"msg":"You already Booked Appointment"})
     }
 }
-module.exports={userreg,login,getDoctorDetails,islogin,isDoctor,bookAppointment}
+let getUserAppointments=async(req,res)=>{
+    let data=await appointmentModel.find({"userId":req.params.userId})
+    res.send(data)
+}
+module.exports={userreg,login,getDoctorDetails,islogin,isDoctor,bookAppointment,getUserAppointments}

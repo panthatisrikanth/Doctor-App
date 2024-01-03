@@ -1,3 +1,4 @@
+const appointmentModel = require("../models/appointmentModel")
 const doctorModel = require("../models/doctorModel")
 const userModel = require("../models/userModel")
 
@@ -19,4 +20,13 @@ let registerasDoctor=async(req,res)=>{
         res.json({"msg":"Your already  Register as a doctor"})
     }
 }
-module.exports={registerasDoctor}
+let getDoctorAppointments=async(req,res)=>{
+    let data=await appointmentModel.find({"DoctorId":req.params.DoctorId})
+    res.send(data)
+
+}
+let approveAppointment=async(req,res)=>{
+    await appointmentModel.findOneAndUpdate({"_id":req.body._id},{$set:{status:"Approved"}})
+    res.send({"msg":"Appointment Updated"})
+}
+module.exports={registerasDoctor,getDoctorAppointments,approveAppointment}
