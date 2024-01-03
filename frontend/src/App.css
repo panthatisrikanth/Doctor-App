@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+/* Add this to your existing CSS or create a new stylesheet */
+
+.menu {
+  position: absolute;
+  top: 50px; /* Adjust the top position as needed */
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.menu div {
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.main-content {
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+/* Default styles for larger screens */
+.menu {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  /* Styles for screens with a width of 600px or less */
+  .menu {
+    position: absolute;
+    top: 50px; /* Adjust the top position as needed */
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1;
+  }
+
+  .menu div {
+    margin-bottom: 10px;
+  }
+
+  .main-content {
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+
+  button {
+    background-color: #ffffff;
+    color: #3498db;
   }
 }
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #e92525;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: #04AA6D;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+@media screen and (max-width: 766px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    
   }
-  to {
-    transform: rotate(360deg);
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
   }
 }
